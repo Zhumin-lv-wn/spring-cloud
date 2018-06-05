@@ -1,0 +1,27 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: micoreservicecloud-zuul-getway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka
+  instance:
+    instance-id: getway-9527.com
+    prefer-ip-address: true
+
+
+info:
+  app.name: zm-micorecloud
+  company.name: www.zhumin.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+  ###网关路由映射
+zuul:
+  routes:
+    mydept.serviceId: microservicecloud-dept
+    mydept.path: /mydept/**
+  ignore-local-service: true  #忽略真是的服务  "*" 忽略多个
+  prefix: /zhumin  #统一前缀
+
